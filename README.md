@@ -2,6 +2,8 @@
 
 A simple notes app built with the MERN stack. Create, edit and delete notes, with a clean light and dark interface that follows your system setting.
 
+> **This is a learning project, not a production application.** I built it to practice the MERN stack, REST APIs, rate limiting and UI design. It has no user accounts yet, so all notes are shared. Please do not store anything private in it.
+
 ## Tech stack
 
 - **Frontend:** React 19, Vite, React Router, Tailwind CSS 4, daisyUI 5, Geist font

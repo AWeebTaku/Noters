@@ -7,7 +7,15 @@
     "start": "npm run start --prefix backend"
   },
   "keywords": [],
-  "author": "",
   "license": "ISC",
-  "description": ""
+  "description": "A simple notes app built with the MERN stack. Create, edit and delete notes, with a clean light and dark interface that follows your system setting.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AWeebTaku/Noters.git"
+  },
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/AWeebTaku/Noters/issues"
+  },
+  "homepage": "https://github.com/AWeebTaku/Noters#readme"
 }
