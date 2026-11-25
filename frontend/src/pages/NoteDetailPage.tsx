@@ -2,11 +2,13 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { Link, useNavigate, useParams } from "react-router";
 import api from "../lib/axios";
+import { getErrorMessage } from "../lib/utils";
+import type { Note } from "../types";
 import toast from "react-hot-toast";
 import { ArrowLeftIcon, LoaderIcon, Trash2Icon } from "lucide-react";
 
 const NoteDetailPage = () => {
-  const [note, setNote] = useState(null);
+  const [note, setNote] = useState<Note | null>(null);
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
 
@@ -44,6 +46,7 @@ const NoteDetailPage = () => {
   };
 
   const handleSave = async () => {
+    if (!note) return;
     if (!note.title.trim() || !note.content.trim()) {
       toast.error("Add a title and some content");
       return;
@@ -52,12 +55,12 @@ const NoteDetailPage = () => {
     setSaving(true);
 
     try {
-      await api.put(`/notes/${id}`, note);
+      await api.put(`/notes/${id}`, { title: note.title, content: note.content });
       toast.success("Note updated successfully");
       navigate("/");
     } catch (error) {
       console.log("Error saving the note:", error);
-      toast.error("Failed to update note");
+      toast.error(getErrorMessage(error, "Failed to update note"));
     } finally {
       setSaving(false);
     }

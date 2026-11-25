@@ -3,6 +3,7 @@ import { useState } from "react";
 import toast from "react-hot-toast";
 import { Link, useNavigate } from "react-router";
 import api from "../lib/axios";
+import { getErrorMessage, isRateLimited } from "../lib/utils";
 
 const CreatePage = () => {
   const [title, setTitle] = useState("");
@@ -11,7 +12,7 @@ const CreatePage = () => {
 
   const navigate = useNavigate();
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     if (!title.trim() || !content.trim()) {
@@ -26,10 +27,10 @@ const CreatePage = () => {
       navigate("/");
     } catch (error) {
       console.log("Error creating note", error);
-      if (error.response?.status === 429) {
+      if (isRateLimited(error)) {
         toast.error("Slow down, you're creating notes too fast", { duration: 4000 });
       } else {
-        toast.error("Failed to create note");
+        toast.error(getErrorMessage(error, "Failed to create note"));
       }
     } finally {
       setLoading(false);

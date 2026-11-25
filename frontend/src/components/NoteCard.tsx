@@ -3,17 +3,18 @@ import { Link } from "react-router";
 import { formatDate } from "../lib/utils";
 import api from "../lib/axios";
 import toast from "react-hot-toast";
+import type { Note } from "../types";
 
-const NoteCard = ({ note, setNotes }) => {
-  const handleDelete = async (e, id) => {
+const NoteCard = ({ note, onDeleted }: { note: Note; onDeleted: () => void }) => {
+  const handleDelete = async (e: React.MouseEvent) => {
     e.preventDefault(); // stop the card link from navigating
 
     if (!window.confirm("Are you sure you want to delete this note?")) return;
 
     try {
-      await api.delete(`/notes/${id}`);
-      setNotes((prev) => prev.filter((note) => note._id !== id));
+      await api.delete(`/notes/${note._id}`);
       toast.success("Note deleted");
+      onDeleted();
     } catch (error) {
       console.log("Error in handleDelete", error);
       toast.error("Failed to delete note");
@@ -34,7 +35,7 @@ const NoteCard = ({ note, setNotes }) => {
           </span>
           <button
             className="btn btn-ghost btn-sm btn-square text-error"
-            onClick={(e) => handleDelete(e, note._id)}
+            onClick={handleDelete}
             aria-label={`Delete ${note.title}`}
           >
             <Trash2Icon className="size-4" />
