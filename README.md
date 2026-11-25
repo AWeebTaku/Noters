@@ -1,5 +1,9 @@
 # Noters
 
+<!-- badges:start -->
+[![CI](https://github.com/AWeebTaku/Noters/actions/workflows/ci.yml/badge.svg)](https://github.com/AWeebTaku/Noters/actions/workflows/ci.yml) [![License](https://img.shields.io/badge/license-MIT-green)](https://github.com/AWeebTaku/Noters/blob/main/LICENSE) ![React](https://img.shields.io/badge/React-20232A?logo=react&logoColor=white) ![Node.js](https://img.shields.io/badge/Node.js-339933?logo=nodedotjs&logoColor=white) ![MongoDB](https://img.shields.io/badge/MongoDB-47A248?logo=mongodb&logoColor=white) [![Live demo](https://img.shields.io/badge/live-demo-brightgreen)](https://noters-aj0u.onrender.com/)
+<!-- badges:end -->
+
 A notes app built with the MERN stack. Sign up, then create, search, edit and delete your own notes. Light and dark interface that follows your system setting.
 
 **Live demo:** https://noters-aj0u.onrender.com/ (use the "Try the demo account" button on the login page)
